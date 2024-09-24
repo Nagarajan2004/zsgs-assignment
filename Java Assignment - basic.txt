@@ -1,0 +1,197 @@
+// Exercism - Day 1 - Hello World!
+class ExercismDay1{
+	public static void main(String[] args){
+		new Greeter().getGreeting();
+	}
+}
+class Greeter {
+    String getGreeting() {
+        return "Hello, World!";
+    }
+}
+
+
+// Write a program to demonstrate compatible type conversions. For eg., float to int, double to float, int to short
+package java_assignment_basic;
+public class TypeConversion {
+	public static void main(String[] args) {
+		// Data Types --> byte, short, int, long, float, double, char, boolean
+		long Long = 0; // implicit type conversion
+		System.out.println(Long);
+
+		byte Byte = (byte) 5l; // explicit type conversion
+		System.out.println(Byte);
+
+		// auto boxing --> primitive to corresponding wrapper class
+		Integer Integer = 10;
+		// auto unboxing --> wrapper class to primitive data type
+		int Int = Integer; // new Integer(10) --> deprecated to version 9.
+		System.out.println(Int);
+
+		// byte
+		System.out.println("-------byte--------");
+		byte a = -128;
+		System.out.println(a);
+		byte b = 127;
+		System.out.println(b);
+		byte c = (byte) 128;
+		c--;
+		System.out.println(c);
+		byte d = (byte) 2.5d;
+		System.out.println(d);
+		byte e = (byte) 130l;
+		System.out.println(e);
+		byte b1 = 'a';
+		System.out.println(b1);
+		System.out.println("-------end------");
+
+		// short
+		System.out.println("-------short--------");
+		short f = -32_768;
+		System.out.println(f);
+		short g = 32_767;
+		g += 10;
+		System.out.println(g);
+		short h = (byte) 32_768;
+		System.out.println(h);
+		short s1 = 'A';
+		System.out.println(s1);
+		System.out.println("------end-------");
+
+		// int
+		System.out.println("-------int---------");
+		int i = -2_147_483_648; // we can't (int)2,147,483,650
+		System.out.println(i);
+		int j = 2_147_483_647;
+		j++;
+		System.out.println(j);
+		int i1 = '1';
+		System.out.println(i1);
+		System.out.println("------end------");
+
+		// long
+		System.out.println("-------long------");
+		long k = -9_223_372_036_854_775_808l; // must spicify the 'l' in last
+		System.out.println(k);
+		long l = 9_223_372_036_854_775_807l;
+		System.out.println(l);
+		long m = (long) (9_223_372_036_854_775_807.0f);
+		System.out.println(m);
+		long l1 = 'a';
+		System.out.println(l1);
+		System.out.println("------end-------");
+
+		// float
+		System.out.println("-------float-------");
+		float n = 9.8f; // if the float data type must spcify the 'f' in last
+		System.out.println(n);
+		float o = (float) 9.888_888_888; // round of to the 6 decimal
+		System.out.println(o);
+		float p = 5; // we can int --> float is legal
+		System.out.println(p);
+		float q = (float) 9_223_372_036_854_775_807l;
+		System.out.println(q);
+		float f1 = 'a';
+		System.out.println(f1);
+		System.out.println("-------end------");
+
+		// double
+		System.out.println("---------double------");
+		double s = 9.123_123_123_123_123;// outPut - 9.123123123123124 (doubt)
+		System.out.println(s);
+		double t = (double) 9_223_372_036_854_775_807l;
+		System.out.println(t);
+		double d1 = 'a';
+		System.out.println(d1);
+		System.out.println("-------end------");
+
+		// char 0x0000 - 0xFFFD
+		System.out.println("------char------");
+		char ch = 'a';
+		System.out.println(ch);
+		char ch2 = 12; // int --> char is auto box
+		System.out.println(ch2);
+		System.out.println("-----end-------");
+	}
+}
+
+
+
+//3. Create multiple classes in single file and compile and explore how many .class files are generated.
+public class MultipleClasses {
+	public static void main(String[] args) {
+		
+	}
+}
+class Test1{
+	
+}
+class Test2{
+	
+}
+class Test3{
+	
+}
+class Test4{	
+	//the inner class file name will be parent_.class_name$class_name.class
+	class Test5{	// Test4$Test5.class
+		
+	}
+}
+// --> totally 6 .class files created 
+
+
+//4. Write a Java program that gets a number from the user and displays the name of the weekday. Use enum.
+enum WeekDays{
+	SUNDAY, MONDAY, TUESDAY, WEDNESHDAY, THURSDAY, FRIDAY, SATURDAY
+}
+public class WeekDay {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter the number :");
+		int n = sc.nextInt();
+		n %= 7;
+		switch(n) {
+		case 1: 
+			System.out.println(WeekDays.SUNDAY);
+			break;
+		case 2: 
+			System.out.println(WeekDays.MONDAY);
+			break;
+		case 3: 
+			System.out.println(WeekDays.TUESDAY);
+			break;
+		case 4: 
+			System.out.println(WeekDays.WEDNESHDAY);
+			break;
+		case 5: 
+			System.out.println(WeekDays.THURSDAY);
+			break;
+		case 6: 
+			System.out.println(WeekDays.FRIDAY);
+			break;
+		case 0: 
+			System.out.println(WeekDays.SATURDAY);
+			break;
+		default:
+			System.out.println("invalid data!!");
+		}
+		sc.close();
+	}
+}
+
+
+//5. Write a program that calculates the average weight of 10 people. Use descriptive and meaningful variable names following Java naming conventions. Use proper datatypes for the variables.
+public class AverageWeight {
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+		float sumOfWeight = 0f;
+		System.out.println("enter 10 people weights : ");
+		for(int i = 0; i < 10; i++) {
+			sumOfWeight += scan.nextFloat();
+		}
+		float averageWeightOfPeople = (float)(sumOfWeight/10.0);
+		System.out.printf("Average people weight ==> %.2f", averageWeightOfPeople);
+		scan.close();
+	}
+}
