@@ -1,0 +1,14 @@
+class Acronym {
+    String[] words;
+    Acronym(String phrase) {
+        words = phrase.split("[_ -]");
+    }
+    String get() {
+        StringBuilder acrm = new StringBuilder();
+        for(String w : words)
+            if(!w.equals(""))
+                acrm.append((w.charAt(0)+"").toUpperCase());
+        return acrm.toString();
+    }
+}
+

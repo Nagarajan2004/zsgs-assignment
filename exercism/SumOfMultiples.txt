@@ -1,0 +1,18 @@
+import java.util.Set;
+import java.util.HashSet;
+class SumOfMultiples {
+    Set<Integer> set = new HashSet<>();
+    SumOfMultiples(int number, int[] set) {
+        for(int s : set)
+            if(s != 0)
+                for(int i = 1; i < number; i++)
+                    if(i%s == 0) this.set.add(i);
+    }
+    int getSum() {
+        int sum = 0;
+        for(int s : set)
+            sum += s;
+        return sum;
+    }
+}
+
