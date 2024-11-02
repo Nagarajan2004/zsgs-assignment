@@ -1,0 +1,18 @@
+class BottleSong {
+    String[] bottles = {"no", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten"};
+    String recite(int startBottles, int takeDown) {
+        StringBuilder sb = new StringBuilder();
+        while(takeDown-- > 0){
+            sb.append(bottles[startBottles]+" green "+(startBottles == 1 ? "bottle" : "bottles")+" hanging on the wall,\n")
+                .append(bottles[startBottles]+" green "+(startBottles == 1 ? "bottle" : "bottles")+" hanging on the wall,\n")
+                .append("And if one green bottle should accidentally fall,\n")
+                .append("There'll be "+bottles[startBottles-1].toLowerCase()+" green "+(startBottles == 2 ? "bottle" : "bottles")+" hanging on the wall.\n");
+            if(takeDown != 0){
+                sb.append("\n");
+            }
+            startBottles--;
+        }
+        return sb.toString();
+    }
+
+}

@@ -1,0 +1,55 @@
+import java.util.Map;
+import java.util.HashMap;
+class ResistorColorTrio {
+    Map<String, Integer> mapColors;
+    ResistorColorTrio(){
+        mapColors = new HashMap<>();
+        mapColors.put("black", 0);
+        mapColors.put("brown", 1);
+        mapColors.put("red", 2);
+        mapColors.put("orange", 3);  // kilo
+        mapColors.put("yellow", 4);
+        mapColors.put("green", 5);
+        mapColors.put("blue", 6);    // mega
+        mapColors.put("violet", 7);
+        mapColors.put("grey", 8);
+        mapColors.put("white", 9);   // giga
+    }
+    
+    String label(String[] colors) {
+        int resisVal = 0;
+        resisVal += mapColors.get(colors[0])*10 + mapColors.get(colors[1]);
+        if(resisVal == 0) return "0 ohms";
+        int t = mapColors.get(colors[2]);
+        if(t == 0) return resisVal+" ohms";
+        if(t == 2 && resisVal%10 == 0){
+            return (resisVal/10) + " kiloohms";
+        } else if(t < 3){
+            while(t-- > 0){
+                resisVal *= 10;
+            }
+            return resisVal + " ohms";
+        } else if(t >= 3 && t < 6){
+            int rept = t - 3;
+            while(rept-- > 0){
+                resisVal *= 10;
+            }
+            return resisVal + " kiloohms";
+        } else if(t >= 6 && t < 9){
+            int rept = t - 6;
+             while(rept-- > 0){
+                resisVal *= 10;
+            }
+            return resisVal + " megaohms";
+        } else if( t >= 9){
+            int rept = t - 9;
+             while(rept-- > 0){
+                resisVal *= 10;
+            }
+            return resisVal + " gigaohms";
+        }
+        
+        return "";
+    }
+}
+
