@@ -1,0 +1,27 @@
+import java.util.List;
+
+class KindergartenGarden {
+    StringBuilder part1, part2;
+    KindergartenGarden(String garden) {
+        part1 = new StringBuilder();
+        part2 = new StringBuilder();
+        int i = 0;
+        while(garden.charAt(i) != '\n'){
+            part1.append(garden.charAt(i++));
+        }
+        i++;
+        while(i < garden.length()){
+            part2.append(garden.charAt(i++));
+        }
+    }
+
+    List<Plant> getPlantsOfStudent(String student) {
+        int index = (student.charAt(0)-'A')*2;
+        return List.of(Plant.getPlant(part1.charAt(index)),
+                      Plant.getPlant(part1.charAt(index+1)),
+                      Plant.getPlant(part2.charAt(index)),
+                      Plant.getPlant(part2.charAt(index+1)));
+    }
+
+}
+
